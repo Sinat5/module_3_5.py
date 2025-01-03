@@ -1,11 +1,15 @@
-def get_multiplied_digits(number):
-    str_number = str(number)
+def get_multiplied_digits(number):  # 1
+    number = int(number)  # отсекаем нули в начале number
+    str_number = str(number)  # 2
+    first = int(str_number[0])  # 3
+
+    while str_number.endswith('0'):  # отсекаем нули в конце number
+        str_number = str_number[:len(str_number) - 1]
     if len(str_number) > 1:
-        first = int(str_number[0])
         return first * get_multiplied_digits(int(str_number[1:]))
     else:
-        return int(str_number)
+        return first
 
 
-result = get_multiplied_digits(40203)
-print(result)
+num = input('Введите целое число: ')
+print(f'Произведение цифр числа {num} :', get_multiplied_digits(num))
